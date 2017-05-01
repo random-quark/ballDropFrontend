@@ -1,0 +1,70 @@
+<surfaces>
+    <surface type="0">
+        <vertices>
+            <vertex>
+                <x>155.596435547</x>
+                <y>350.618133545</y>
+            </vertex>
+            <vertex>
+                <x>345.612976074</x>
+                <y>138.055999756</y>
+            </vertex>
+            <vertex>
+                <x>104.018066406</x>
+                <y>109.018371582</y>
+            </vertex>
+        </vertices>
+        <texCoords>
+            <texCoord>
+                <x>0.981523871</x>
+                <y>0.471785098</y>
+            </texCoord>
+            <texCoord>
+                <x>0.245601788</x>
+                <y>0.110941604</y>
+            </texCoord>
+            <texCoord>
+                <x>0.662217021</x>
+                <y>0.714698017</y>
+            </texCoord>
+        </texCoords>
+        <source>
+            <source-type>fbo</source-type>
+            <source-name>Box 1</source-name>
+        </source>
+    </surface>
+    <surface type="0">
+        <vertices>
+            <vertex>
+                <x>155.596435547</x>
+                <y>350.618133545</y>
+            </vertex>
+            <vertex>
+                <x>345.612976074</x>
+                <y>138.055999756</y>
+            </vertex>
+            <vertex>
+                <x>104.018066406</x>
+                <y>109.018371582</y>
+            </vertex>
+        </vertices>
+        <texCoords>
+            <texCoord>
+                <x>0.981523871</x>
+                <y>0.471785098</y>
+            </texCoord>
+            <texCoord>
+                <x>0.245601788</x>
+                <y>0.110941604</y>
+            </texCoord>
+            <texCoord>
+                <x>0.662217021</x>
+                <y>0.714698017</y>
+            </texCoord>
+        </texCoords>
+        <source>
+            <source-type>fbo</source-type>
+            <source-name>Box 2</source-name>
+        </source>
+    </surface>
+</surfaces>

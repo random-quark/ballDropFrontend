@@ -1,0 +1,6 @@
+ofxBox2d
+ofxGui
+ofxOpenCv
+ofxOsc
+ofxPiMapper
+ofxXmlSettings
