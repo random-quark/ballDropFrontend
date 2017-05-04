@@ -14,15 +14,14 @@ class BallBox : public ofx::piMapper::FboSource {
         void dropBalls();
     
     private:
+        void createEdge(vector<float> pts);
+    
         string color;
         vector<ofColor> circle_colors;
         vector<shared_ptr<ofxBox2dCircle>> circles;
         ofxBox2d box2d;
-        vector <ofPolyline>                 lines;
-        vector <shared_ptr<ofxBox2dEdge> >       edges;
-        vector <shared_ptr<ofxBox2dEdge> >       edges2;
+        vector <ofPolyline> debugLines;
+        vector <shared_ptr<ofxBox2dEdge>> edges;
     
         ofImage wall;
-        ofPolyline debugLine;
-        ofPolyline debugLine2;
 };

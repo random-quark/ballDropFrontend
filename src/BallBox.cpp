@@ -1,6 +1,8 @@
 #include "BallBox.h"
 #include "ofUtils.h"
 
+#define DEBUG false
+
 using std::min;
 
 BallBox::BallBox(string _name, string _color) {
@@ -22,6 +24,15 @@ void BallBox::setup(){
     box2d.registerGrabbing();
     
     std::vector<float> pts { 149,314,155,587,353,588,354,314,149,314 };
+    float b = 481.0;
+    std::vector<float> pts2 { 149+b,310,155+b,587,353+b,588,354+b,310,149+b,310 };
+
+    createEdge(pts);
+    createEdge(pts2);
+}
+
+void BallBox::createEdge(std::vector<float> pts) {
+    ofPolyline debugLine;
     shared_ptr <ofxBox2dEdge> edge = shared_ptr<ofxBox2dEdge>(new ofxBox2dEdge);
     for (int j=0; j<pts.size(); j+=2) {
         float x = pts[j];
@@ -30,29 +41,10 @@ void BallBox::setup(){
         
         debugLine.addVertex(x, y);
     }
-    
-    float b = 483.0;
-    std::vector<float> pts2 { 149+b,314,155+b,587,353+b,588,354+b,314,149+b,314 };
-    shared_ptr <ofxBox2dEdge> edge2 = shared_ptr<ofxBox2dEdge>(new ofxBox2dEdge);
-    for (int j=0; j<pts2.size(); j+=2) {
-        float x = pts2[j];
-        float y = pts2[j+1];
-        edge2.get()->addVertex(x, y);
-        
-        debugLine2.addVertex(x, y);
-    }
-
     edge.get()->create(box2d.getWorld());
     edges.push_back(edge);
-
-    edge2.get()->create(box2d.getWorld());
-    edges2.push_back(edge2);
+    debugLines.push_back(debugLine);
 }
-
-void BallBox::createEdge(std::vector<float> pts) {
-    
-}
-
 
 void BallBox::dropBalls() {
     circle_colors.clear();
@@ -82,9 +74,13 @@ void BallBox::update(){
 void BallBox::draw(){
     ofBackground(255);
     wall.draw(0,0);
-    debugLine.draw();
-    debugLine2.draw();
     
+    if (DEBUG) {
+        for (int i=0; i<debugLines.size(); i++) {
+            debugLines[i].draw();
+        }
+    }
+        
     for(int i=0; i<circles.size(); i++) {
         ofSetColor(circle_colors[i]);
         ofFill();
