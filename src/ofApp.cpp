@@ -68,16 +68,20 @@ void ofApp::keyPressed(int key){
 
 void ofApp::keyReleased(int key){
 	piMapper.keyReleased(key);
+    if (key=='b') {
+        dropBall(0);
+        dropBall(1);
+    }
 }
 
 void ofApp::mousePressed(int x, int y, int button){
-	piMapper.mousePressed(x, y, button);
+    piMapper.mousePressed(x, y, button);
 }
 
 void ofApp::mouseReleased(int x, int y, int button){
-	piMapper.mouseReleased(x, y, button);
+    piMapper.mouseReleased(x, y, button);
 }
 
 void ofApp::mouseDragged(int x, int y, int button){
-	piMapper.mouseDragged(x, y, button);
+    piMapper.mouseDragged(x, y, button);
 }

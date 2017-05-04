@@ -1,4 +1,5 @@
 #include "BallBox.h"
+#include "ofUtils.h"
 
 using std::min;
 
@@ -10,15 +11,48 @@ BallBox::BallBox(string _name, string _color) {
 void BallBox::setup(){
     ofLog() << "box is called " << name << endl;
     
-	allocate(500, 500);
+    wall.load("wall.jpg");
+    
+	allocate(960, 637);
     
     box2d.init();
     box2d.setGravity(0, 10);
-    box2d.createBounds();
+    box2d.createBounds(0,0,960,637);
     box2d.setFPS(60.0);
     box2d.registerGrabbing();
+    
+    std::vector<float> pts { 149,314,155,587,353,588,354,314,149,314 };
+    shared_ptr <ofxBox2dEdge> edge = shared_ptr<ofxBox2dEdge>(new ofxBox2dEdge);
+    for (int j=0; j<pts.size(); j+=2) {
+        float x = pts[j];
+        float y = pts[j+1];
+        edge.get()->addVertex(x, y);
+        
+        debugLine.addVertex(x, y);
+    }
+    
+    float b = 483.0;
+    std::vector<float> pts2 { 149+b,314,155+b,587,353+b,588,354+b,314,149+b,314 };
+    shared_ptr <ofxBox2dEdge> edge2 = shared_ptr<ofxBox2dEdge>(new ofxBox2dEdge);
+    for (int j=0; j<pts2.size(); j+=2) {
+        float x = pts2[j];
+        float y = pts2[j+1];
+        edge2.get()->addVertex(x, y);
+        
+        debugLine2.addVertex(x, y);
+    }
 
+    edge.get()->create(box2d.getWorld());
+    edges.push_back(edge);
+
+    edge2.get()->create(box2d.getWorld());
+    edges2.push_back(edge2);
 }
+
+void BallBox::createEdge(std::vector<float> pts) {
+    
+}
+
 
 void BallBox::dropBalls() {
     circle_colors.clear();
@@ -37,7 +71,7 @@ void BallBox::newBall(){
     float r = ofRandom(4, 20);		// a random radius 4px - 20px
     circles.push_back(shared_ptr<ofxBox2dCircle>(new ofxBox2dCircle));
     circles.back().get()->setPhysics(3.0, 0.53, 0.1);
-    int x = ofRandom(500);
+    int x = ofRandom(960);
     circles.back().get()->setup(box2d.getWorld(), x, 0, r);
 }
 
@@ -47,6 +81,10 @@ void BallBox::update(){
 
 void BallBox::draw(){
     ofBackground(255);
+    wall.draw(0,0);
+    debugLine.draw();
+    debugLine2.draw();
+    
     for(int i=0; i<circles.size(); i++) {
         ofSetColor(circle_colors[i]);
         ofFill();
