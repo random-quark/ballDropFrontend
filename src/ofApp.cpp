@@ -45,13 +45,13 @@ void ofApp::getNewMessages() {
     while(receiver.hasWaitingMessages()) {
         ofxOscMessage m;
         receiver.getNextMessage( &m );
-        if ( m.getAddress() == "/happy" ) {
+        if ( m.getAddress() == "/positive" ) {
             dropBall(0);
         }
-        if (m.getAddress() == "/sad") {
+        if (m.getAddress() == "/negative") {
             dropBall(1);
         }
-        if (m.getAddress() == "/drop") {
+        if (m.getAddress() == "/reset") {
             ballBox1->dropBalls();
             ballBox2->dropBalls();
         }
