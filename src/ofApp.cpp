@@ -54,8 +54,8 @@ void ofApp::getNewMessages() {
         }
         if (m.getAddress() == "/reset") {
             ofLog() << "reset balls" << endl;
-            ballBox1->dropBalls();
-            ballBox2->dropBalls();
+            ballBox1->clearBalls();
+            ballBox2->clearBalls();
         }
     }
 }
@@ -73,6 +73,10 @@ void ofApp::keyReleased(int key){
     if (key=='b') {
         dropBall(0);
         dropBall(1);
+    }
+    if (key=='d') {
+        ballBox1->clearBalls();
+        ballBox2->clearBalls();
     }
 }
 

@@ -11,7 +11,7 @@ class BallBox : public ofx::piMapper::FboSource {
 		void update();
 		void draw();
         void newBall();
-        void dropBalls();
+        void clearBalls();
     
     private:
         void createEdge(vector<float> pts);

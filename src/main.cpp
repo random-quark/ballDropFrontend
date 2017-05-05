@@ -20,6 +20,6 @@ int main(int argc, char * argv[]){
 	
 	Settings::instance()->setFullscreen(fullscreen);
 
-	ofSetupOpenGL(WIDTH, HEIGHT, OF_WINDOW);
+	ofSetupOpenGL(WIDTH, HEIGHT, OF_FULLSCREEN);
 	ofRunApp(new ofApp());
 }

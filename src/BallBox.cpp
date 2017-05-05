@@ -18,9 +18,9 @@ void BallBox::setup(){
 	allocate(960, 637);
     
     box2d.init();
-    box2d.setGravity(0, 50);
+    box2d.setGravity(0, 10);
     box2d.createBounds(0,0,960,637);
-    box2d.setFPS(60.0);
+    box2d.setFPS(20.0);
     box2d.registerGrabbing();
     
     std::vector<float> pts { 149,314,155,587,353,588,354,314,149,314 };
@@ -46,7 +46,7 @@ void BallBox::createEdge(std::vector<float> pts) {
     debugLines.push_back(debugLine);
 }
 
-void BallBox::dropBalls() {
+void BallBox::clearBalls() {
     circle_colors.clear();
     circles.clear();
 }
